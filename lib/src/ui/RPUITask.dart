@@ -200,41 +200,18 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
             flex: 1,
           ),
           // Carousel indicator
+          //
           Expanded(
+            child: Text(widget.title,
+            textScaleFactor: 1.5,
+            style: TextStyle(
+              color: Colors.black,
+            ),),
             flex: 2,
-            child: (!navigableTask)
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: widget.task.steps.map(
-                      (step) {
-                        var index = widget.task.steps.indexOf(step);
-                        return Container(
-                          width: 7.0,
-                          height: 7.0,
-                          margin: EdgeInsets.symmetric(horizontal: 3.0),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: index <= _currentQuestionIndex
-                                  ? Theme.of(context).primaryColor
-                                  : Theme.of(context)
-                                      .primaryColor
-                                      .withOpacity(0.5)),
-                        );
-                      },
-                    ).toList(),
-                  )
-                : Container(),
           ),
-          // Close button
           Expanded(
+            child: Container(),
             flex: 1,
-            child: IconButton(
-              icon: Icon(
-                Icons.highlight_off,
-                color: Theme.of(context).primaryColor,
-              ),
-              onPressed: () => blocTask.sendStatus(RPStepStatus.Canceled),
-            ),
           ),
         ],
       ),
@@ -246,8 +223,8 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
     RPLocalizations? locale = RPLocalizations.of(context);
 
     return WillPopScope(
-      onWillPop: () => blocTask.sendStatus(RPStepStatus.Canceled),
-      //   onWillPop: () {},
+      // onWillPop: () => blocTask.sendStatus(RPStepStatus.Canceled),
+        onWillPop: () async {return true;},
       child: Scaffold(
         // backgroundColor: Theme.of(context).backgroundColor,
         backgroundColor: Colors.white,
