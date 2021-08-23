@@ -24,7 +24,8 @@ class RPUITask extends StatefulWidget {
   /// It's only optional. If nothing is provided (is ```null```) the survey just quits without doing anything with the result.
   final void Function(RPTaskResult result)? onCancel;
 
-  RPUITask({required this.task, this.onSubmit, this.onCancel});
+  final String title;
+  RPUITask({required this.task, this.onSubmit, this.onCancel, required this.title});
 
   @override
   _RPUITaskState createState() => _RPUITaskState();
@@ -73,7 +74,7 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
             //Creating and sending the task level of result to a stream to which anybody can subscribe
             createAndSendResult();
             if (widget.task.closeAfterFinished) {
-              Navigator.of(context).pop();
+              // Navigator.of(context).pop();
             }
             break;
           }
@@ -246,6 +247,7 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
 
     return WillPopScope(
       onWillPop: () => blocTask.sendStatus(RPStepStatus.Canceled),
+      //   onWillPop: () {},
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         resizeToAvoidBottomInset: true,

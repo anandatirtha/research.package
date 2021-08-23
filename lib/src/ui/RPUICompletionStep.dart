@@ -73,7 +73,7 @@ class _RPUICompletionStepState extends State<RPUICompletionStep>
                   blocTask.sendStatus(RPStepStatus.Finished);
                 },
                 child: Text(
-                    RPLocalizations.of(context)?.translate('DONE') ?? "DONE"),
+                    RPLocalizations.of(context)?.translate('DONE') ?? "Proceed"),
               ),
             )
           ],

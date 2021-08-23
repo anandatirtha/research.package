@@ -281,11 +281,11 @@ class _SignatureRouteState extends State<_SignatureRoute> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
 
-  final SignatureController _signatureController = SignatureController(
-    penStrokeWidth: 5,
-    penColor: Colors.red,
-    exportBackgroundColor: Colors.blue,
-  );
+  // final SignatureController _signatureController = SignatureController(
+  //   penStrokeWidth: 5,
+  //   penColor: Colors.red,
+  //   exportBackgroundColor: Colors.blue,
+  // );
   late Signature _signature;
 
   Widget _signatureCanvas() {
@@ -298,16 +298,16 @@ class _SignatureRouteState extends State<_SignatureRoute> {
       },
       onTap: () {
         setState(() {
-          if (_signatureController.isNotEmpty) {
-            _isSignatureAdded = true;
-          }
+          // if (_signatureController.isNotEmpty) {
+          //   _isSignatureAdded = true;
+          // }
         });
       },
       onPanEnd: (e) {
         setState(() {
-          if (_signatureController.isNotEmpty) {
-            _isSignatureAdded = true;
-          }
+          // if (_signatureController.isNotEmpty) {
+          //   _isSignatureAdded = true;
+          // }
         });
       },
       child: Container(
@@ -326,7 +326,7 @@ class _SignatureRouteState extends State<_SignatureRoute> {
   @override
   void initState() {
     _signature = Signature(
-      controller: _signatureController,
+      // controller: _signatureController,
       height: 200,
       width: 300,
       backgroundColor: Colors.transparent,
@@ -400,7 +400,7 @@ class _SignatureRouteState extends State<_SignatureRoute> {
               child: Text(locale?.translate('clear') ?? 'Clear'),
               onPressed: _isSignatureAdded
                   ? () {
-                      _signatureController.clear();
+                      // _signatureController.clear();
                       setState(() {
                         _isSignatureAdded = false;
                       });
@@ -437,18 +437,18 @@ class _SignatureRouteState extends State<_SignatureRoute> {
           onPressed: (_isNameFilled && _isSignatureAdded)
               ? () {
                   if (widget._consentSignature.requiresSignatureImage) {
-                    _signatureController.toPngBytes().then(
-                      (image) {
-                        widget._onFinished(
-                          RPSignatureResult.withParams(
-                            _firstNameController.value.text,
-                            _lastNameController.value.text,
-                            // Converting the Uint8List into a string to make it compatible with JSON serialization
-                            image.toString(),
-                          ),
-                        );
-                      },
-                    );
+                    // _signatureController.toPngBytes().then(
+                    //   (image) {
+                    //     widget._onFinished(
+                    //       RPSignatureResult.withParams(
+                    //         _firstNameController.value.text,
+                    //         _lastNameController.value.text,
+                    //         // Converting the Uint8List into a string to make it compatible with JSON serialization
+                    //         image.toString(),
+                    //       ),
+                    //     );
+                    //   },
+                    // );
                   } else {
                     widget._onFinished(
                       RPSignatureResult.withParams(
