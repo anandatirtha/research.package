@@ -203,7 +203,7 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
           //
           Expanded(
             child: Text(widget.title,
-            textScaleFactor: 1.2,
+            textScaleFactor: 1.4,
             style: TextStyle(
               color: Colors.black,
             ),),
