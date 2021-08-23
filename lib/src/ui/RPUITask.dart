@@ -249,7 +249,8 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
       onWillPop: () => blocTask.sendStatus(RPStepStatus.Canceled),
       //   onWillPop: () {},
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        // backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Colors.white,
         resizeToAvoidBottomInset: true,
         body: SafeArea(
           child: Column(
@@ -266,6 +267,7 @@ class _RPUITaskState extends State<RPUITask> with CanSaveResult {
                   itemCount: _activeSteps.length,
                   controller: _taskPageViewController,
                   physics: NeverScrollableScrollPhysics(),
+
                 ),
               ),
               // Bottom navigation
